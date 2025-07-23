@@ -103,9 +103,9 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
->  Ganti /home/ubuntu/ sesuai dengan direktori tempat kamu clone repo-nya kalau beda.
  ```
+Ganti /home/ubuntu/ sesuai dengan direktori tempat kamu clone repo-nya kalau beda.
+
 3. Aktifkan servicenya
  ```bash
 sudo systemctl daemon-reload
