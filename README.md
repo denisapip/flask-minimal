@@ -63,7 +63,7 @@ Silakan fork repository ini dan kirim pull request jika kamu memiliki perbaikan 
 Project ini dibuat dengan tujuan untuk tetap sederhana dan efisien, sangat cocok untuk memulai pengembangan aplikasi web kecil atau membuat prototype dengan cepat tanpa banyak kerumitan.
 
 
-##OTOMATISASI
+## CARA OTOMATISASI
 
 #Solusi: Jadikan Flask App kamu sebagai systemd Service
 
@@ -71,23 +71,25 @@ Project ini dibuat dengan tujuan untuk tetap sederhana dan efisien, sangat cocok
 
 Misalnya kamu berada di:
 
+ ```bash
 cd /home/ubuntu/flask-minimal/
-
+ ```
 Dan kamu jalankan Flask dengan:
 
+ ```bash
 source venv/bin/activate
 python app.py
-
+ ```
 Maka kita tinggal bungkus itu ke dalam service.
 
 2. Buat file systemd
 
 Buat file baru:
-
+ ```bash
 sudo nano /etc/systemd/system/flaskapp.service
-
+ ```
 Isi dengan ini:
-
+ ```bash
 [Unit]
 Description=Flask Minimal App
 After=network.target
@@ -103,25 +105,25 @@ Restart=always
 WantedBy=multi-user.target
 
 >  Ganti /home/ubuntu/ sesuai dengan direktori tempat kamu clone repo-nya kalau beda.
-
+ ```
 3. Aktifkan servicenya
-
+ ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable flaskapp
 sudo systemctl start flaskapp
-
+ ```
 Cek status:
-
+ ```bash
 sudo systemctl status flaskapp
-
+ ```
 Kalau berhasil, akan muncul active (running).
 
 4. Reboot dan Coba Akses
 
 Sekarang coba:
-
+ ```bash
 sudo reboot
-
+ ```
 Tunggu sebentar, lalu buka:
 
 http://<public-ip-ec2>:5000
@@ -132,7 +134,7 @@ Harusnya langsung bisa diakses tanpa login lagi!
 Kalau Gagal
 
 Cek log dengan:
-
+ ```bash
 journalctl -u flaskapp -e
-
+ ```
 Pastikan port 5000 dibuka di Security Group AWS EC2
